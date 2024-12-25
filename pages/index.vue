@@ -8,7 +8,7 @@
     <div v-else-if="error" class="text-center text-secondary">{{ error }}</div>
     <div v-else-if="!researchData.length" class="text-center text-secondary">No results found</div>
     <div v-else class="max-w-4xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-      <ResearchCard v-for="item in researchData" :key="item.link" :title="item.title" :description="item.description" :link="item.link" />
+      <ResearchCard v-for="item in researchData" :key="item.link" :title="item.title" :link="item.link" />
     </div>
     <FooterSection />
   </div>
@@ -76,7 +76,6 @@ const parsePubMedDetails = (data) => {
 
   return Array.from(items).map(item => ({
     title: item.querySelector('ArticleTitle')?.textContent || 'No title',
-    description: item.querySelector('AbstractText')?.textContent || 'No description',
     link: `https://pubmed.ncbi.nlm.nih.gov/${item.querySelector('PMID')?.textContent}`,
   }));
 };
@@ -96,7 +95,6 @@ const parseCrossRefData = (data) => {
   const items = data.message?.items || [];
   return items.map(item => ({
     title: item.title?.[0] || 'No title',
-    description: item.abstract || 'No description',
     link: item.URL || '#',
   }));
 };
