@@ -9,6 +9,9 @@ Qesearch is a simple web application built with the Nuxt JS framework and styled
 
 Demo: https://qesearch.pages.dev
 
+## Requirements
+* Node JS >= v23.4.0
+
 ## Build setup
 ```bash
 # install dependencies
